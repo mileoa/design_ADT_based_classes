@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import Final
+from typing import Final, Generic, TypeVar
+
+T = TypeVar("T")
 
 
-class BoundedStackATD[T](ABC):
+class BoundedStackATD(ABC, Generic[T]):
 
     POP_NIL: Final[int] = 0  # pop() не выполнялась
     POP_OK: Final[int] = 1  # pop() завершилась успешно
@@ -64,7 +66,7 @@ class BoundedStackATD[T](ABC):
         pass
 
 
-class BoundedStack[T](BoundedStackATD[T]):
+class BoundedStack(BoundedStackATD, Generic[T]):
 
     def __init__(self, max_size: int = 32) -> None:
         if max_size <= 0:
@@ -92,11 +94,11 @@ class BoundedStack[T](BoundedStackATD[T]):
         return None
 
     def peek(self) -> T:
+        result: T = 0
         if self.size() == 0:
-            result: T = 0
             self._peek_status = self.PEEK_ERR
         else:
-            result: T = self._stack[-1]
+            result = self._stack[-1]
             self._peek_status = self.PEEK_OK
         return result
 
@@ -104,11 +106,11 @@ class BoundedStack[T](BoundedStackATD[T]):
         return len(self._stack)
 
     def clear(self) -> None:
-        self._stack: list[T] = []
+        self._stack = []
 
-        self._peek_status: int = self.PEEK_NIL
-        self._push_status: int = self.PUSH_NIL
-        self._pop_status: int = self.POP_NIL
+        self._peek_status = self.PEEK_NIL
+        self._push_status = self.PUSH_NIL
+        self._pop_status = self.POP_NIL
 
     def get_push_status(self) -> int:
         return self._push_status
