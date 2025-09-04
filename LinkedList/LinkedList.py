@@ -15,11 +15,11 @@ class LinkedListATD(ABC, Generic[T]):
 
     HEAD_NIL: Final[int] = 0  # head() не выполнялась
     HEAD_OK: Final[int] = 1  # head() завершилась успешно
-    HEAD_ERR: Final[int] = 2  # head() курсор не установлен
+    HEAD_ERR_EMPTY: Final[int] = 2  # head() курсор не установлен
 
     TAIL_NIL: Final[int] = 0  # tail() не выполнялась
     TAIL_OK: Final[int] = 1  # tail() завершилась успешно
-    TAIL_ERR: Final[int] = 2  # tail() курсор не установлен
+    TAIL_ERR_EMPTY: Final[int] = 2  # tail() курсор не установлен
 
     RIGHT_NIL: Final[int] = 0  # right() не выполнялась
     RIGHT_OK: Final[int] = 1  # right() завершилась успешно
@@ -38,7 +38,7 @@ class LinkedListATD(ABC, Generic[T]):
 
     REMOVE_NIL: Final[int] = 0  # remove() не выполнялась
     REMOVE_OK: Final[int] = 1  # remove() завершилась успешно
-    REMOVE_ERR: Final[int] = 2  # remove() курсор не установлен
+    REMOVE_ERR_EMPTY: Final[int] = 2  # remove() курсор не установлен
 
     ADD_TO_EMPTY_NIL: Final[int] = 0  # add_to_empty() не выполнялась
     ADD_TO_EMPTY_OK: Final[int] = 1  # add_to_empty() завершилась успешно
@@ -46,11 +46,11 @@ class LinkedListATD(ABC, Generic[T]):
 
     ADD_TAIL_NIL: Final[int] = 0  # add_tail() не выполнялась
     ADD_TAIL_OK: Final[int] = 1  # add_tail() завершилась успешно
-    ADD_TAIL_ERR: Final[int] = 2  # add_tail() курсор не установлен
+    ADD_TAIL_ERR_EMPTY: Final[int] = 2  # add_tail() курсор не установлен
 
     REPLACE_NIL: Final[int] = 0  # replace() не выполнялась
     REPLACE_OK: Final[int] = 1  # replace() завершилась успешно
-    REPLACE_ERR: Final[int] = 2  # replace() курсор не установлен
+    REPLACE_ERR_EMPTY: Final[int] = 2  # replace() курсор не установлен
 
     FIND_NIL: Final[int] = 0  # find() не выполнялась
     FIND_OK: Final[int] = 1  # find() завершилась успешно (значение найдено)
@@ -60,7 +60,7 @@ class LinkedListATD(ABC, Generic[T]):
 
     GET_NIL: Final[int] = 0  # get() не выполнялась
     GET_OK: Final[int] = 1  # get() завершилась успешно
-    GET_ERR: Final[int] = 2  # get() курсор не установлен
+    GET_ERR_EMPTY: Final[int] = 2  # get() курсор не установлен
 
     # Конструктор
     # Постусловие: Создан связанный список с неустановленным курсором
