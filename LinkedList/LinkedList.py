@@ -164,3 +164,59 @@ class LinkedListATD(ABC, Generic[T]):
     @abstractmethod
     def is_value(self) -> bool:
         pass
+
+    # Запросы статусов
+    # Возвращает значение HEAD_*
+    @abstractmethod
+    def get_head_status(self) -> int:
+        pass
+
+    # Возвращает значение TAIL_*
+    @abstractmethod
+    def get_tail_status(self) -> int:
+        pass
+
+    # Возвращает значение RIGHT_*
+    @abstractmethod
+    def get_right_status(self) -> int:
+        pass
+
+    # Возвращает значение PUT_RIGHT_*
+    @abstractmethod
+    def get_put_right_status(self) -> int:
+        pass
+
+    # Возвращает значение PUT_LEFT_*
+    @abstractmethod
+    def get_put_left_status(self) -> int:
+        pass
+
+    # Возвращает значение REMOVE_*
+    @abstractmethod
+    def get_remove_status(self) -> int:
+        pass
+
+    # Возвращает значение ADD_TO_EMPTY_*
+    @abstractmethod
+    def get_add_to_empty_status(self) -> int:
+        pass
+
+    # Возвращает значение ADD_TAIL_*
+    @abstractmethod
+    def get_add_tail_status(self) -> int:
+        pass
+
+    # Возвращает значение REPLACE_*
+    @abstractmethod
+    def get_replace_status(self) -> int:
+        pass
+
+    # Возвращает значение FIND_*
+    @abstractmethod
+    def get_find_status(self) -> int:
+        pass
+
+    # Возвращает значение GET_*
+    @abstractmethod
+    def get_get_status(self) -> int:
+        pass
