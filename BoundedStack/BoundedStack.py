@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Final, Generic, TypeVar
+from typing import Final, Generic, TypeVar, cast
 
 T = TypeVar("T")
 
@@ -94,12 +94,11 @@ class BoundedStack(BoundedStackATD, Generic[T]):
         return None
 
     def peek(self) -> T:
-        result: T = 0
         if self.size() == 0:
             self._peek_status = self.PEEK_ERR
-        else:
-            result = self._stack[-1]
-            self._peek_status = self.PEEK_OK
+            raise IndexError("Cannot peek from empty stack")
+        result: T = self._stack[-1]
+        self._peek_status = self.PEEK_OK
         return result
 
     def size(self) -> int:

@@ -139,7 +139,8 @@ class TestBoundedStack(unittest.TestCase):
             string_stack.push(s)
 
         self.assertEqual(string_stack.size(), 3)
-        self.assertEqual(string_stack.peek(), "test")
+        string: str = string_stack.peek()
+        self.assertEqual(string, "test")
 
         string_stack.pop()
         self.assertEqual(string_stack.peek(), "world")
