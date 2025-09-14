@@ -8,11 +8,13 @@ class QueueATD(ABC, Generic[T]):
 
     DEQUEUE_NIL: Final[int] = 0  # dequeue() не выполнялась
     DEQUEUE_OK: Final[int] = 1  # dequeue() завершилась успешно
-    DEQUEUE_EMPTY: Final[int] = 2  # dequeue() выполнилась над пустым списком
+    DEQUEUE_EMPTY: Final[int] = (
+        2  # dequeue() ошибка выполнения над пустым списком
+    )
 
     FIRST_NIL: Final[int] = 0  # first() не выполнялась
     FIRST_OK: Final[int] = 1  # first() завершилась успешно
-    FIRST_EMPTY: Final[int] = 2  # first() выполнилась над пустым списком
+    FIRST_EMPTY: Final[int] = 2  # first() ошибка выполнения над пустым списком
 
     # Постусловие: создана пустая очередь
     def __init__(self):
@@ -25,13 +27,13 @@ class QueueATD(ABC, Generic[T]):
         pass
 
     @abstractmethod
-    # Предусловие: очредь не пуста
+    # Предусловие: очередь не пуста
     # Постусловие: из очереди удален первый элемент
     def dequeue(self) -> None:
         pass
 
     # Запросы
-    # Предусловие: очредь не пуста
+    # Предусловие: очередь не пуста
     @abstractmethod
     def first(self) -> T:  # Возвращает первый элемент в очереди
         pass
