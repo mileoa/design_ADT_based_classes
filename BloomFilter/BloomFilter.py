@@ -1,5 +1,5 @@
 import math
-from abc import ABC
+from abc import ABC, abstractmethod
 from random import randint
 from typing import Any, Callable, Dict, Final, Generic, TypeVar
 
@@ -15,20 +15,24 @@ class BloomFilterATD(ABC, Generic[T]):
 
     # Команды
     # Постусловие: добавляет значение в фильтр
+    @abstractmethod
     def add(self, value: T) -> None:
         pass
 
     # Запросы
     # Возвращает результат проверки наличия значения в фильтре
+    @abstractmethod
     def is_value(self, value: T) -> bool:
         pass
 
     # Возвращает количество элементов на входе
+    @abstractmethod
     def get_input_amount(self) -> int:
         pass
 
     # Возвращает точность фильтра в процнетах
-    def get_accuracy_percent(self) -> int:
+    @abstractmethod
+    def get_accuracy_percent(self) -> float:
         pass
 
 
@@ -45,7 +49,7 @@ class BloomFilter(BloomFilterATD, Generic[T]):
                 f"accuracy_percent должен быть < 99.99999999999999 и >= 0.0 получено: {accuracy_percent}"
             )
         self._input_amount: Final[int] = input_amount
-        self._accuracy_percent = accuracy_percent
+        self._accuracy_percent: float = accuracy_percent
         self._bit_list: int = 0
         self._filter_size: int = self._caluclate_filter_size(
             self._input_amount, self._accuracy_percent
@@ -71,7 +75,7 @@ class BloomFilter(BloomFilterATD, Generic[T]):
     def get_input_amount(self) -> int:
         return self._input_amount
 
-    def get_accuracy_percent(self) -> int:
+    def get_accuracy_percent(self) -> float:
         return self._accuracy_percent
 
     # Функции для реализации
